@@ -823,7 +823,7 @@ class Welcome(commands.Cog):
         count: int = await guild_settings.get_attr(event).counter()
         await guild_settings.get_attr(event).counter.set(count + 1)
 
-    async def __dm_user(self, member: discord.Member, ctx: commands.Context) -> None:
+    async def __dm_user(self, member: discord.Member) -> None:
         """Sends a DM to the user with a filled-in message_format."""
 
         embed=discord.Embed(
