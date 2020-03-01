@@ -823,13 +823,51 @@ class Welcome(commands.Cog):
         count: int = await guild_settings.get_attr(event).counter()
         await guild_settings.get_attr(event).counter.set(count + 1)
 
-    async def __dm_user(self, member: discord.Member) -> None:
+    async def __dm_user(self, member: discord.Member, ctx: commands.Context) -> None:
         """Sends a DM to the user with a filled-in message_format."""
 
-        message_format = await self.config.guild(member.guild).join.whisper.message()
+        embed=discord.Embed(
+            title="Welcome to the Kanium Discord!", 
+            description="\n" +
+            "Please ensure to have a look at our #public_info channel and understand who we are and how this place works." +    
+            "\n" +
+            "Additionally it must be mentioned that being on our Discord and playing games with us, does not require Kanium membership. We, on the other hand, expect that those who seek to apply for membership show earnestness- in both application and in becoming part of the community", 
+            color=0x0080ff
+            )   
+        embed.set_thumbnail(
+            url="https://i.imgur.com/4TLdfDA.png"
+            )
+        embed.add_field(
+            name="Apply to join Kanium", 
+            value="!apply applicationText", 
+            inline=True
+            )  
+        embed.add_field(
+            name="Description", 
+            value="Use this to submit an application for joining Kanium", 
+            )
+        embed.add_field(
+            name="Enjoy your stay", 
+            value="Feel free to hang out in the chat rooms. If you're looking to play a specific game, join that game's chat channel", 
+            inline=False
+            )
+        embed.add_field(
+            name="Useful information", 
+            value="\n[KANIUM Website](https://www.kanium.org/)"+
+            "\n[KANIUM Steam Group](https://steamcommunity.com/groups/Kanium)"+
+            "\n[KANIUM Twitch Channel](https://twitch.tv/kaniumtv)"+
+            "\n[KANIUM Open Collective](https://opencollective.com/kanium)", 
+            inline=True
+            )
+        embed.set_footer(
+            text="If you have any questions, please ping a @Recruiter",
+            icon_url="https://i.imgur.com/4TLdfDA.png"
+            )
+
+        message_format = embed
 
         try:
-            await member.send(message_format.format(member=member, server=member.guild))
+            await member.send(embed=message_format)
         except discord.Forbidden:
             log.error(
                 f"Failed to send DM to member ID {member.id} (server ID {member.guild.id}): insufficient permissions"
