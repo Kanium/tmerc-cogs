@@ -831,7 +831,7 @@ class Welcome(commands.Cog):
             description="\n" +
             "Please ensure to have a look at our #public_info channel and understand who we are and how this place works." +    
             "\n" +
-            "Additionally it must be mentioned that being on our Discord and playing games with us, does not require Kanium membership. We, on the other hand, expect that those who seek to apply for membership show earnestness- in both application and in becoming part of the community", 
+            "\nAdditionally it must be mentioned that being on our Discord and playing games with us, does not require Kanium membership. We, on the other hand, expect that those who seek to apply for membership show earnestness- in both application and in becoming part of the community", 
             color=0x0080ff
             )   
         embed.set_thumbnail(
