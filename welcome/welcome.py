@@ -832,7 +832,7 @@ class Welcome(commands.Cog):
             "Please ensure to have a look at our #public_info channel and understand who we are and how this place works." +    
             "\n" +
             "\nAdditionally it must be mentioned that being on our Discord and playing games with us, does not require Kanium membership. We, on the other hand, expect that those who seek to apply for membership show earnestness- in both application and in becoming part of the community", 
-            color=0x0080ff
+            color=0x3399ff
             )   
         embed.set_thumbnail(
             url="https://i.imgur.com/4TLdfDA.png"
